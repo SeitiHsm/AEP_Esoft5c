@@ -18,10 +18,8 @@ public class HistoricoDoStatus {
 
     public void exibir() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        System.out.println("Data: " + data.format(formatter));
-        System.out.println("Status: " + status);
-        System.out.println("Comentário: " + comentario);
-        System.out.println("Responsável: " + responsavel);
-        System.out.println("----------------------------");
+        System.out.println("[" + data.format(formatter) + "] Status: " + status);
+        System.out.println("Responsável: " + responsavel + " | Comentário: " + comentario);
+        System.out.println("-------------------------------------------------");
     }
 }
