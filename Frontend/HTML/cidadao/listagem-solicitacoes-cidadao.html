@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovTECH - Listagem de Solicitações Cidadão</title>
+  <link rel="stylesheet" href="/AEP/CSS/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="menu-cidadao.html">GovTECH</a>
+
+    <nav class="nav-links" aria-label="Menu principal">
+      <a href="menu-cidadao.html">Inicio</a>
+    </nav>
+
+    <a class="back-link" href="menu-cidadao.html" data-back-link>Voltar</a>
+
+    <div class="user-menu">
+      <button class="user-button" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="user-avatar" aria-hidden="true">U</span>
+        <span>Usuario</span>
+      </button>
+
+      <div class="dropdown" role="menu">
+        <a href="#" role="menuitem">Meus dados</a>
+        <a href="#" role="menuitem">Trocar senha</a>
+        <a href="#" role="menuitem">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page page-grid-3-1">
+    <section class="form-panel">
+      <h1>Lista de todas as solicitações locais:</h1>
+
+      <div class="requests-wrapper requests-margin-large">
+        <div class="table-scroll">
+        <table class="requests-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Categoria</th>
+              <th>Localização</th>
+              <th>Nome do solicitante</th>
+              <th>Prioridade</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>001</td>
+              <td>Iluminacao publica</td>
+              <td>Bairro Centro</td>
+              <td>João Silva</td>
+              <td>Alta</td>
+              <td><a class="access-button primary-button" href="informacao-solicitacao-cidadao.html">Acessar</a></td>
+            </tr>
+
+            <tr>
+              <td>002</td>
+              <td>Buraco na via</td>
+              <td>Bairro Vila Nova</td>
+              <td>Maria Oliveira</td>
+              <td>Média</td>
+              <td><a class="access-button primary-button" href="informacao-solicitacao-cidadao.html">Acessar</a></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </section>
+
+    <aside class="form-panel">
+      <h2 class="panel-heading">Filtragem de Solicitações</h2>
+
+      <form class="request-form" onsubmit="event.preventDefault();">
+        <div class="form-field">
+          <label for="search-id">Pesquisa Por ID</label>
+          <input id="search-id" name="search-id" type="text" placeholder="Ex: 001">
+        </div>
+
+        <div class="form-field">
+          <label for="search-bairro">Pesquisa Bairro</label>
+          <input id="search-bairro" name="search-bairro" type="text" placeholder="Digite o bairro">
+        </div>
+
+        <div class="form-field">
+          <label for="search-nome">Pesquisa Nome</label>
+          <input id="search-nome" name="search-nome" type="text" placeholder="Nome do solicitante">
+        </div>
+
+        <fieldset class="filter-fieldset">
+          <legend class="filter-legend">Prioridade</legend>
+          <div class="filter-row">
+            <label><input type="checkbox" name="prio" value="alta"> Alta</label>
+            <label><input type="checkbox" name="prio" value="media"> Média</label>
+            <label><input type="checkbox" name="prio" value="baixa"> Baixa</label>
+          </div>
+        </fieldset>
+
+        <div class="form-field">
+          <label for="filtro-categoria">Categoria</label>
+          <select id="filtro-categoria" name="filtro-categoria">
+            <option value="">Todas</option>
+            <option value="iluminacao">Iluminacao publica</option>
+            <option value="buraco">Buraco na via</option>
+            <option value="limpeza">Limpeza urbana</option>
+            <option value="saneamento">Saneamento</option>
+            <option value="outros">Outros</option>
+          </select>
+        </div>
+
+        <div class="form-actions form-actions-column">
+          <button class="primary-button" type="submit">Pesquisar</button>
+          <button class="secondary-button" type="reset">Limpar</button>
+          <button class="secondary-button" type="button" onclick="document.querySelector('form').reset();">Cancelar Pesquisa</button>
+        </div>
+      </form>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>@2026 AEP Todos Os direitos reservados</p>
+    <a href="#">Politica de privacidade</a>
+  </footer>
+
+  <script src="/AEP/JS/app.js"></script>
+</body>
+</html>

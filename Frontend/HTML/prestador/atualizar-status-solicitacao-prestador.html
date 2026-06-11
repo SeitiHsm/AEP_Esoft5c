@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovTECH - Atualizar Status da Solicitação</title>
+  <link rel="stylesheet" href="/AEP/CSS/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="menu-prestador.html">GovTECH</a>
+
+    <nav class="nav-links" aria-label="Menu principal">
+      <a href="menu-prestador.html">Inicio</a>
+    </nav>
+
+    <a class="back-link" href="informacao-solicitacao-prestador.html">Voltar</a>
+
+    <div class="user-menu">
+      <button class="user-button" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="user-avatar" aria-hidden="true">P</span>
+        <span>Prestador</span>
+      </button>
+
+      <div class="dropdown" role="menu">
+        <a href="#" role="menuitem">Meus dados</a>
+        <a href="#" role="menuitem">Trocar senha</a>
+        <a href="#" role="menuitem">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="form-page form-grid">
+    <section class="form-panel">
+      <h1>Atualizar status da solicitação</h1>
+
+      <form id="status-form" class="request-form">
+        <div class="form-field">
+          <label for="request-id">ID</label>
+          <input id="request-id" type="text" value="001" disabled>
+        </div>
+
+        <div class="form-field">
+          <label for="responsavel-tecnico">Responsável Técnico</label>
+          <input id="responsavel-tecnico" type="text" placeholder="Digite o responsável técnico" required>
+        </div>
+
+        <div class="form-field">
+          <label for="status-atual">Status Atual</label>
+          <select id="status-atual" required>
+            <option value="">Selecione</option>
+            <option value="Triagem">Triagem</option>
+            <option value="Em andamento">Em andamento</option>
+            <option value="Concluído">Concluído</option>
+            <option value="Aguardando peças">Aguardando peças</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="comentario">Comentário</label>
+          <textarea id="comentario" rows="5" placeholder="Descreva a atualização do status"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button class="secondary-button" type="reset">Limpar</button>
+          <button class="primary-button" type="button" id="update-button">Atualizar</button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="form-panel preview-panel">
+      <h2>Preview</h2>
+      <div class="preview-content">
+        <textarea id="preview-text" rows="14" readonly class="preview-textarea"></textarea>
+        <div class="preview-confirm">Confirme que deseja salvar o novo status</div>
+        <div class="button-row">
+          <button class="secondary-button" type="button" id="cancel-button">Cancelar</button>
+          <button class="primary-button" type="button" id="save-button">Salvar</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>@2026 AEP Todos Os direitos reservados</p>
+    <a href="#">Politica de privacidade</a>
+  </footer>
+
+  <script src="/AEP/JS/app.js"></script>
+  <script src="/AEP/JS/atualizar-status-solicitacao-prestador.js"></script>
+</body>
+</html>

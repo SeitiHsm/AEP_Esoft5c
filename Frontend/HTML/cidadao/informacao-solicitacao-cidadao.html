@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovTECH - Informação da Solicitação Cidadão</title>
+  <link rel="stylesheet" href="/AEP/CSS/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="menu-cidadao.html">GovTECH</a>
+
+    <nav class="nav-links" aria-label="Menu principal">
+      <a href="menu-cidadao.html">Inicio</a>
+    </nav>
+
+    <a class="back-link" href="menu-cidadao.html" data-back-link>Voltar</a>
+
+    <div class="user-menu">
+      <button class="user-button" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="user-avatar" aria-hidden="true">U</span>
+        <span>Usuario</span>
+      </button>
+
+      <div class="dropdown" role="menu">
+        <a href="#" role="menuitem">Meus dados</a>
+        <a href="#" role="menuitem">Trocar senha</a>
+        <a href="#" role="menuitem">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page page-grid-2-1">
+    <section class="form-panel">
+      <h1>Informação da Solicitação</h1>
+
+      <form class="request-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Categoria do problema</label>
+            <input type="text" value="Iluminacao publica" disabled>
+          </div>
+
+          <div class="form-field">
+            <label>Anonimato</label>
+            <input type="text" value="Nao" disabled>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Nome do solicitante</label>
+          <input type="text" value="João Silva" disabled>
+        </div>
+
+        <div class="form-field">
+          <label>Descricao do problema</label>
+          <textarea rows="6" disabled>Poste sem iluminação na esquina, lâmpada queimada há 2 semanas.</textarea>
+        </div>
+
+        <fieldset class="address-group">
+          <legend>Endereco</legend>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label>CEP</label>
+              <input type="text" value="12345-678" disabled>
+            </div>
+
+            <div class="form-field">
+              <label>Endereco</label>
+              <input type="text" value="Rua das Flores" disabled>
+            </div>
+          </div>
+
+          <div class="form-row form-row-three">
+            <div class="form-field">
+              <label>Bairro</label>
+              <input type="text" value="Centro" disabled>
+            </div>
+
+            <div class="form-field">
+              <label>Numero</label>
+              <input type="text" value="123" disabled>
+            </div>
+
+            <div class="form-field">
+              <label>Complemento</label>
+              <input type="text" value="Apto 4" disabled>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- botão 'Voltar à lista' removido conforme solicitado -->
+      </form>
+    </section>
+
+    <aside class="form-panel">
+      <h2 class="panel-heading">Histórico de atendimento</h2>
+
+      <div class="requests-wrapper requests-margin-small">
+        <div class="table-scroll">
+          <table class="requests-table">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Responsavel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>02/06/2026</td>
+                <td>Recebido</td>
+                <td>Equipe A</td>
+              </tr>
+              <tr>
+                <td>04/06/2026</td>
+                <td>Em andamento</td>
+                <td>Operador B</td>
+              </tr>
+              <tr>
+                <td>06/06/2026</td>
+                <td>Concluído</td>
+                <td>Supervisor C</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>@2026 AEP Todos Os direitos reservados</p>
+    <a href="#">Politica de privacidade</a>
+  </footer>
+
+  <script src="/AEP/JS/app.js"></script>
+</body>
+</html>

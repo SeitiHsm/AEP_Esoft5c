@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovTECH - Solicitar Problema</title>
+  <link rel="stylesheet" href="/AEP/CSS/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="menu-cidadao.html">GovTECH</a>
+
+    <nav class="nav-links" aria-label="Menu principal">
+      <a href="menu-cidadao.html">Inicio</a>
+    </nav>
+
+    <a class="back-link" href="menu-cidadao.html" data-back-link>Voltar</a>
+
+    <div class="user-menu">
+      <button class="user-button" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="user-avatar" aria-hidden="true">U</span>
+        <span>Usuario</span>
+      </button>
+
+      <div class="dropdown" role="menu">
+        <a href="#" role="menuitem">Meus dados</a>
+        <a href="#" role="menuitem">Trocar senha</a>
+        <a href="#" role="menuitem">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="form-page">
+    <section class="form-panel">
+      <h1>Solicitar um problema</h1>
+
+      <form class="request-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="categoria">Categoria do problema</label>
+            <select id="categoria" name="categoria" required>
+              <option value="">Selecione</option>
+              <option value="iluminacao">Iluminacao publica</option>
+              <option value="buraco">Buraco na via</option>
+              <option value="limpeza">Limpeza urbana</option>
+              <option value="saneamento">Saneamento</option>
+              <option value="outros">Outros</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="anonimato">Anonimato</label>
+            <select id="anonimato" name="anonimato" required>
+              <option value="nao">Nao</option>
+              <option value="sim">Sim</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="nome">Nome do solicitante</label>
+          <input id="nome" name="nome" type="text" placeholder="Digite seu nome">
+        </div>
+
+        <div class="form-field">
+          <label for="descricao">Descricao do problema</label>
+          <textarea id="descricao" name="descricao" rows="6" placeholder="Descreva o problema encontrado" required></textarea>
+        </div>
+
+        <fieldset class="address-group">
+          <legend>Endereco</legend>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cep">CEP</label>
+              <input id="cep" name="cep" type="text" placeholder="00000-000" required>
+            </div>
+
+            <div class="form-field">
+              <label for="endereco">Endereco</label>
+              <input id="endereco" name="endereco" type="text" placeholder="Rua, avenida ou travessa" required>
+            </div>
+          </div>
+
+          <div class="form-row form-row-three">
+            <div class="form-field">
+              <label for="bairro">Bairro</label>
+              <input id="bairro" name="bairro" type="text" required>
+            </div>
+
+            <div class="form-field">
+              <label for="numero">Numero</label>
+              <input id="numero" name="numero" type="text" required>
+            </div>
+
+            <div class="form-field">
+              <label for="complemento">Complemento</label>
+              <input id="complemento" name="complemento" type="text">
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button class="secondary-button" type="reset">Limpar</button>
+          <button class="primary-button" type="submit">Salvar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>@2026 AEP Todos Os direitos reservados</p>
+    <a href="#">Politica de privacidade</a>
+  </footer>
+
+  <script src="/AEP/JS/app.js"></script>
+</body>
+</html>
