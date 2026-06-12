@@ -1,3 +1,4 @@
+// ── Dropdown do usuário ───────────────────────────────────────────
 const userButton = document.querySelector(".user-button");
 const dropdown = document.querySelector(".dropdown");
 
@@ -15,6 +16,7 @@ if (userButton && dropdown) {
   });
 }
 
+// ── Painéis de conteúdo (data-panel) ─────────────────────────────
 const actionButtons = document.querySelectorAll("[data-panel]");
 const contentPanels = document.querySelectorAll("[data-content-panel]");
 
@@ -31,13 +33,12 @@ actionButtons.forEach((button) => {
   });
 });
 
+// ── Anonimato ─────────────────────────────────────────────────────
 const anonimatoSelect = document.querySelector("#anonimato");
 const nomeSolicitanteInput = document.querySelector("#nome");
 
 function atualizarNomeSolicitante() {
-  if (!anonimatoSelect || !nomeSolicitanteInput) {
-    return;
-  }
+  if (!anonimatoSelect || !nomeSolicitanteInput) return;
 
   const anonimo = anonimatoSelect.value === "sim";
   nomeSolicitanteInput.disabled = anonimo;
@@ -55,6 +56,7 @@ if (anonimatoSelect && nomeSolicitanteInput) {
   atualizarNomeSolicitante();
 }
 
+// ── Botão Voltar ──────────────────────────────────────────────────
 const backLink = document.querySelector("[data-back-link]");
 
 if (backLink) {
@@ -65,3 +67,36 @@ if (backLink) {
     }
   });
 }
+
+// ── Navbar: nome e avatar do usuário ─────────────────────────────
+const nomeArmazenado = localStorage.getItem("nome");
+const userAvatar     = document.querySelector(".user-avatar");
+const userNomeSpan   = document.querySelector(".user-button span:not(.user-avatar)");
+
+if (nomeArmazenado) {
+  if (userAvatar)   userAvatar.textContent  = nomeArmazenado.charAt(0).toUpperCase();
+  if (userNomeSpan) userNomeSpan.textContent = nomeArmazenado;
+}
+
+// ── Navbar: links do dropdown ─────────────────────────────────────
+// Detecta se a página está dentro de uma subpasta (cidadao/ ou prestador/)
+const emSubpasta = /\/(cidadao|prestador)\//.test(window.location.pathname);
+const prefixo    = emSubpasta ? "../" : "";
+
+document.querySelectorAll('.dropdown a[role="menuitem"]').forEach(link => {
+  const texto = link.textContent.trim();
+
+  if (texto === "Meus dados") {
+    link.href = `${prefixo}meus-dados.html`;
+
+  } else if (texto === "Trocar senha") {
+    link.remove();
+
+  } else if (texto === "Sair") {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      localStorage.clear();
+      window.location.href = `${prefixo}login.html`;
+    });
+  }
+});

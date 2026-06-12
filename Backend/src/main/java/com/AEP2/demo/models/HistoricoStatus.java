@@ -1,6 +1,7 @@
 package com.AEP2.demo.models;
 
 import com.AEP2.demo.enums.EnumStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -39,6 +40,7 @@ public class HistoricoStatus {
 
         private LocalDateTime data;
 
+        @JsonIgnore
         @ManyToOne
         @JoinColumn(name = "solicitacao_id")
         private Solicitacao solicitacao;

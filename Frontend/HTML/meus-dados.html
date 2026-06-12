@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovTECH - Meus Dados</title>
+  <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#">GovTECH</a>
+
+    <nav class="nav-links" aria-label="Menu principal">
+      <a id="link-menu" href="#">Inicio</a>
+    </nav>
+
+    <a class="back-link" id="link-voltar" href="#" data-back-link>Voltar</a>
+
+    <div class="user-menu">
+      <button class="user-button" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="user-avatar" aria-hidden="true">U</span>
+        <span>Usuario</span>
+      </button>
+
+      <div class="dropdown" role="menu">
+        <a href="meus-dados.html" role="menuitem">Meus dados</a>
+        <a href="#" role="menuitem">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth-page" style="max-width: 600px;">
+    <section class="form-panel">
+      <h1>Meus Dados</h1>
+      <p class="auth-subtitle">Atualize suas informações ou exclua sua conta</p>
+
+      <form id="form-dados" class="request-form" novalidate>
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" disabled>
+        </div>
+
+        <div class="form-field">
+          <label for="perfil">Perfil</label>
+          <input id="perfil" type="text" disabled>
+        </div>
+
+        <div class="form-field">
+          <label for="nome">Nome completo</label>
+          <input id="nome" type="text" placeholder="Seu nome completo" required>
+        </div>
+
+        <div class="form-field">
+          <label for="nova-senha">Nova senha <span style="font-weight:400;color:#6b7280">(deixe em branco para não alterar)</span></label>
+          <input id="nova-senha" type="password" placeholder="Digite a nova senha">
+        </div>
+
+        <div class="form-field">
+          <label for="confirma-nova-senha">Confirmar nova senha</label>
+          <input id="confirma-nova-senha" type="password" placeholder="Repita a nova senha">
+        </div>
+
+        <p id="error-msg" class="feedback-msg error"></p>
+        <p id="success-msg" class="feedback-msg success"></p>
+
+        <div class="form-actions">
+          <button class="primary-button" type="submit" style="width:100%;">Salvar alterações</button>
+        </div>
+      </form>
+
+      <hr style="margin: 28px 0; border: none; border-top: 1px solid #dbe4ef;">
+
+      <div>
+        <p style="margin: 0 0 12px; font-size: 14px; color: #6b7280;">
+          Ao excluir sua conta todos os seus dados serão removidos permanentemente.
+        </p>
+        <button id="btn-excluir" class="secondary-button" type="button"
+                style="width:100%; color:#dc2626; border-color:#fca5a5;">
+          Excluir minha conta
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>@2026 AEP Todos Os direitos reservados</p>
+    <a href="#">Politica de privacidade</a>
+  </footer>
+
+  <script src="../JS/app.js"></script>
+  <script src="../JS/meus-dados.js"></script>
+</body>
+</html>

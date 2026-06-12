@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovTECH - Login</title>
+  <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="login.html">GovTECH</a>
+  </header>
+
+  <main class="auth-page">
+    <section class="form-panel">
+      <h1>Entrar</h1>
+      <p class="auth-subtitle">Acesse sua conta para continuar</p>
+
+      <form id="form-login" class="request-form" novalidate>
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="form-field">
+          <label for="senha">Senha</label>
+          <input id="senha" name="senha" type="password" placeholder="Digite sua senha" required>
+        </div>
+
+        <p id="error-msg" class="feedback-msg error"></p>
+
+        <div class="form-actions">
+          <button class="primary-button" type="submit" style="width: 100%;">Entrar</button>
+        </div>
+      </form>
+
+      <p class="auth-link">Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>@2026 AEP Todos Os direitos reservados</p>
+    <a href="#">Politica de privacidade</a>
+  </footer>
+
+  <script src="../JS/app.js"></script>
+  <script src="../JS/login.js"></script>
+</body>
+</html>

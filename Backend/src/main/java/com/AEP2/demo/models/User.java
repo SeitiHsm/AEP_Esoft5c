@@ -21,25 +21,24 @@ public class User implements UserDetails {
     private String login;
     private String password;
     private UserRole role;
+    private String nome;
 
-
-
-    public User(String login, String  password, UserRole role){
+    public User(String login, String password, UserRole role, String nome) {
         this.login = login;
         this.password = password;
         this.role = role;
+        this.nome = nome;
     }
 
     public User() {
-
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UserRole.ADMIN) return
-                List.of(new SimpleGrantedAuthority("ADMIN"), new SimpleGrantedAuthority("USER"));
-        else return  List.of(new SimpleGrantedAuthority("USER"));
+        if(this.role == UserRole.PRESTADOR) return
+                List.of(new SimpleGrantedAuthority("PRESTADOR"), new SimpleGrantedAuthority("CIDADAO"));
+        else return  List.of(new SimpleGrantedAuthority("CIDADAO"));
     }
 
     @Override

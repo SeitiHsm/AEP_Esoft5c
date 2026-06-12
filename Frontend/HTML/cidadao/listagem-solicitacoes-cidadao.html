@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GovTECH - Listagem de Solicitações Cidadão</title>
-  <link rel="stylesheet" href="/AEP/CSS/styles.css">
+  <link rel="stylesheet" href="../../CSS/styles.css">
 </head>
 <body>
   <header class="navbar">
@@ -47,24 +47,7 @@
               <th>Ação</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>001</td>
-              <td>Iluminacao publica</td>
-              <td>Bairro Centro</td>
-              <td>João Silva</td>
-              <td>Alta</td>
-              <td><a class="access-button primary-button" href="informacao-solicitacao-cidadao.html">Acessar</a></td>
-            </tr>
-
-            <tr>
-              <td>002</td>
-              <td>Buraco na via</td>
-              <td>Bairro Vila Nova</td>
-              <td>Maria Oliveira</td>
-              <td>Média</td>
-              <td><a class="access-button primary-button" href="informacao-solicitacao-cidadao.html">Acessar</a></td>
-            </tr>
+          <tbody id="solicitacoes-tbody" data-info-url="informacao-solicitacao-cidadao.html">
           </tbody>
         </table>
         </div>
@@ -74,7 +57,7 @@
     <aside class="form-panel">
       <h2 class="panel-heading">Filtragem de Solicitações</h2>
 
-      <form class="request-form" onsubmit="event.preventDefault();">
+      <form id="form-filtro" class="request-form">
         <div class="form-field">
           <label for="search-id">Pesquisa Por ID</label>
           <input id="search-id" name="search-id" type="text" placeholder="Ex: 001">
@@ -114,7 +97,7 @@
         <div class="form-actions form-actions-column">
           <button class="primary-button" type="submit">Pesquisar</button>
           <button class="secondary-button" type="reset">Limpar</button>
-          <button class="secondary-button" type="button" onclick="document.querySelector('form').reset();">Cancelar Pesquisa</button>
+          <button class="secondary-button" type="reset">Cancelar Pesquisa</button>
         </div>
       </form>
     </aside>
@@ -125,6 +108,7 @@
     <a href="#">Politica de privacidade</a>
   </footer>
 
-  <script src="/AEP/JS/app.js"></script>
+  <script src="../../JS/app.js"></script>
+  <script src="../../JS/listagem-solicitacoes.js"></script>
 </body>
 </html>

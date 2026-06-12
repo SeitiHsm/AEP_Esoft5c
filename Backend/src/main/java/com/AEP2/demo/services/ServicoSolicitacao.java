@@ -3,10 +3,12 @@ package com.AEP2.demo.services;
 import com.AEP2.demo.DTO.AtualizarStatusDTO;
 import com.AEP2.demo.DTO.SolicitacaoDTO;
 import com.AEP2.demo.enums.EnumStatus;
+import com.AEP2.demo.models.HistoricoStatus;
 import com.AEP2.demo.models.Solicitacao;
 import com.AEP2.demo.repositories.SolicitacaoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,6 +35,14 @@ public class ServicoSolicitacao {
 
         solicitacao.setPrioridade(dto.getPrioridade());
         solicitacao.setStatus(EnumStatus.ABERTO);
+
+        HistoricoStatus historico = new HistoricoStatus(
+                EnumStatus.ABERTO,
+                "Solicitação criada",
+                "Sistema",
+                solicitacao
+        );
+        solicitacao.getHistorico().add(historico);
 
         return solicitacaoRepositorio.save(solicitacao);
     }
@@ -62,6 +72,7 @@ public class ServicoSolicitacao {
      Utilizamos um DTO separado para garantir que
      apenas o status seja alterado.
     */
+    @Transactional
     public Solicitacao atualizar(Integer protocolo, AtualizarStatusDTO dto) {
         Solicitacao solicitacao = solicitacaoRepositorio.findById(protocolo).orElse(null);
 
@@ -75,7 +86,15 @@ public class ServicoSolicitacao {
             return null;
         }
 
-        solicitacao.setStatus((dto.getNovoStatus()));
+        solicitacao.setStatus(dto.getNovoStatus());
+
+        HistoricoStatus historico = new HistoricoStatus(
+                dto.getNovoStatus(),
+                dto.getComentario(),
+                dto.getResponsavel(),
+                solicitacao
+        );
+        solicitacao.getHistorico().add(historico);
 
         return solicitacaoRepositorio.save(solicitacao);
     }

@@ -5,6 +5,7 @@ import com.AEP2.demo.DTO.SolicitacaoDTO;
 import com.AEP2.demo.models.Solicitacao;
 import com.AEP2.demo.services.ServicoSolicitacao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,29 +17,38 @@ public class ControleSolicitacao {
     @Autowired
     private ServicoSolicitacao servicoSolicitacao;
 
-    // O JSON enviado pelo usuário é convertido automaticamente
-    // para um objeto SolicitacaoDTO pelo Spring.
+    // Cidadao: criar solicitacao
     @PostMapping
-    public Solicitacao solicitar(@RequestBody SolicitacaoDTO dto){
-        return servicoSolicitacao.criar(dto);
-    }
-    @GetMapping
-    public List<Solicitacao> listar(){
-        return servicoSolicitacao.listar();
+    public ResponseEntity<Solicitacao> solicitar(@RequestBody SolicitacaoDTO dto) {
+        Solicitacao criada = servicoSolicitacao.criar(dto);
+        return ResponseEntity.status(201).body(criada);
     }
 
+    // Cidadao e Prestador: listar solicitacoes
+    @GetMapping
+    public ResponseEntity<List<Solicitacao>> listar() {
+        return ResponseEntity.ok(servicoSolicitacao.listar());
+    }
+
+    // Cidadao e Prestador: ver historico da solicitacao
     @GetMapping("/{id}")
-    public Solicitacao buscar(@PathVariable Integer id){
-        return servicoSolicitacao.buscarPorId(id);
+    public ResponseEntity<Solicitacao> buscar(@PathVariable Integer id) {
+        Solicitacao solicitacao = servicoSolicitacao.buscarPorId(id);
+        if (solicitacao == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(solicitacao);
     }
 
     @DeleteMapping("/{id}")
-    public void remover(@PathVariable Integer id){
+    public ResponseEntity<Void> remover(@PathVariable Integer id) {
         servicoSolicitacao.excluir(id);
+        return ResponseEntity.noContent().build();
     }
 
+    // Prestador: criar historico (atualizar status)
     @PutMapping("/{id}/status")
-    public Solicitacao atualizarStatus(@PathVariable Integer id, @RequestBody AtualizarStatusDTO dto){
-        return servicoSolicitacao.atualizar(id, dto);
+    public ResponseEntity<Solicitacao> atualizarStatus(@PathVariable Integer id, @RequestBody AtualizarStatusDTO dto) {
+        Solicitacao atualizada = servicoSolicitacao.atualizar(id, dto);
+        if (atualizada == null) return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok(atualizada);
     }
 }

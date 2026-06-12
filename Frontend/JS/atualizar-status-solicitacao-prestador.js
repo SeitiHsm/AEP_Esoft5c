@@ -1,38 +1,82 @@
-const updateButton = document.getElementById('update-button');
-const previewText = document.getElementById('preview-text');
-const statusSelect = document.getElementById('status-atual');
-const responsavelInput = document.getElementById('responsavel-tecnico');
-const comentarioInput = document.getElementById('comentario');
-const requestId = document.getElementById('request-id').value;
+const API = "http://localhost:8080";
 
-function formatDateTime(date) {
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = date.getFullYear();
-  const hours = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
-  const seconds = String(date.getSeconds()).padStart(2, '0');
-  return {
-    date: `${day}/${month}/${year}`,
-    time: `${hours}:${minutes}:${seconds}`
-  };
+const params    = new URLSearchParams(window.location.search);
+const protocolo = params.get("protocolo");
+
+const requestIdInput  = document.getElementById("request-id");
+const statusSelect    = document.getElementById("status-atual");
+const responsavelInput = document.getElementById("responsavel-tecnico");
+const comentarioInput = document.getElementById("comentario");
+const previewText     = document.getElementById("preview-text");
+const updateButton    = document.getElementById("update-button");
+const saveButton      = document.getElementById("save-button");
+const cancelButton    = document.getElementById("cancel-button");
+
+// Preenche o campo ID com o protocolo da URL
+if (protocolo) {
+    requestIdInput.value = protocolo;
 }
 
-updateButton.addEventListener('click', () => {
-  const status = statusSelect.value || 'Sem status';
-  const responsavel = responsavelInput.value || 'Não informado';
-  const comentario = comentarioInput.value || 'Nenhum comentário.';
-  const now = new Date();
-  const formatted = formatDateTime(now);
+// ── Botão "Atualizar": gera o preview ──────────────────────────────
+updateButton.addEventListener("click", () => {
+    const status     = statusSelect.options[statusSelect.selectedIndex]?.text || "Sem status";
+    const responsavel = responsavelInput.value.trim() || "Não informado";
+    const comentario = comentarioInput.value.trim() || "Nenhum comentário.";
+    const agora      = new Date();
+    const data       = agora.toLocaleDateString("pt-BR");
+    const hora       = agora.toLocaleTimeString("pt-BR");
 
-  previewText.value = `Status do protocolo (${requestId}) Atualizado:\nData: ${formatted.date} | ${formatted.time}\nStatus: ${status}\nResponsável: ${responsavel}\nComentário: ${comentario}`;
+    previewText.value =
+        `Protocolo: ${protocolo || "?"}\n` +
+        `Data: ${data} ${hora}\n` +
+        `Status: ${status}\n` +
+        `Responsável: ${responsavel}\n` +
+        `Comentário: ${comentario}`;
 });
 
-document.getElementById('save-button').addEventListener('click', () => {
-  alert('Status salvo com sucesso!');
+// ── Botão "Salvar": chama a API e redireciona ──────────────────────
+saveButton.addEventListener("click", async () => {
+    if (!protocolo) {
+        alert("Protocolo não encontrado na URL.");
+        return;
+    }
+
+    const novoStatus = statusSelect.value;
+    if (!novoStatus) {
+        alert("Selecione um status antes de salvar.");
+        return;
+    }
+
+    const responsavel = responsavelInput.value.trim();
+    if (!responsavel) {
+        alert("Informe o responsável técnico.");
+        return;
+    }
+
+    try {
+        const resp = await fetch(`${API}/solicitacoes/${protocolo}/status`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                novoStatus,
+                comentario: comentarioInput.value.trim(),
+                responsavel
+            })
+        });
+
+        if (!resp.ok) {
+            alert("Não foi possível atualizar o status. Verifique se a transição é válida.");
+            return;
+        }
+
+        window.location.href = `informacao-solicitacao-prestador.html?protocolo=${protocolo}`;
+    } catch {
+        alert("Erro ao conectar com o servidor.");
+    }
 });
 
-document.getElementById('cancel-button').addEventListener('click', () => {
-  document.getElementById('status-form').reset();
-  previewText.value = '';
+// ── Botão "Cancelar": limpa o formulário ──────────────────────────
+cancelButton.addEventListener("click", () => {
+    document.getElementById("status-form").reset();
+    previewText.value = "";
 });
