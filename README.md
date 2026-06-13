@@ -14,7 +14,8 @@ O **ObservaAção** é uma solução digital desenvolvida para aproximar o cidad
 
 ## 📺 Demonstração em Vídeo
 Confira a apresentação do sistema e a explicação técnica das práticas aplicadas:
-👉 **[CLIQUE AQUI PARA ASSISTIR AO VÍDEO](https://youtu.be/U8Gby1vnIEI?si=SRv5K0mg-izYeaHQ)**
+*   [1° Entrega](https://youtu.be/U8Gby1vnIEI?si=SRv5K0mg-izYeaHQ)
+*   [2° Entrega](https://youtu.be/8QNUMIqyzp4?si=eA3IGp2bTGUMpt7A)
 
 ---
 
@@ -22,6 +23,8 @@ Confira a apresentação do sistema e a explicação técnica das práticas apli
 Os documentos detalhados exigidos para a entrega (Perfis, Personas e Relatório de Manutenção) encontram-se na raiz deste repositório:
 *   [Visualizar PDF de Perfis e Personas](./Perfis_Personas.pdf)
 *   [Visualizar PDF do Relatório Clean Code](./Relatorio_Clean_Code.pdf)
+*   [Visualizar PDF do Wireframes](./Wireframes.pdf)
+*   [Visualizar PDF do Métricas com Ferramentas](./Metricas_com_Ferramentas.pdf)
 
 ---
 
@@ -37,20 +40,18 @@ O projeto foi concebido sob a ótica dos **Objetivos de Desenvolvimento Sustent�
 
 Este é um projeto Java funcional via terminal (CLI).
 
-1.  **Pré-requisitos:** Ter o Java JDK 17 ou superior instalado.
+1.  **Pré-requisitos:** Ter o Java JDK 25 ou superior instalado.
 2.  **Clonar o repositório:**
     ```bash
     git clone https://github.com/SeitiHsm/AEP_Esoft5c.git
     ```
-3.  **Compilar e Rodar:**
-    *   Abra o projeto no IntelliJ IDEA ou sua IDE de preferência.
+3.  **Inicilizar Spring-Boot:**
+    *   Abra a pasta [Backend](./Backend) no IntelliJ IDEA ou sua IDE de preferência.
     *   Aguarde a indexação dos arquivos.
-    *   Execute a classe `Main.java` (localizada na pasta `src`).
-4.  **Interação:** Utilize os números do teclado para navegar entre as opções de cadastro, listagem e atualização de status.
+    *   Execute a classe [DemoApplication.java](./Backend/src/main/java/com/AEP2/demo/DemoApplication.java)
+4.  **Acessar pagina web**
+    *   Depois de executar o Spring-Boot abra [login.html](./Frontend/HTML/login.html).
+    *   Para testar o usuario cidadão utilize E-mail: cidadao@teste.com Senha: 123456.
+    *   Para testar o usuario prestador utilize E-mail: prestador@teste.com Senha: 123456.
+    *   É possivel tambem fazer um novo usuario tanto cidadão como prestador.
 
----
-
-## 🛠️ Tecnologias Utilizadas
-*   **Linguagem:** Java 17
-*   **Arquitetura:** Orientação a Objetos (POO) com separação em camadas (`models` e `Services`).
-*   **Interface:** Console / Terminal (CLI).
