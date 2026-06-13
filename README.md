@@ -33,39 +33,6 @@ O projeto foi concebido sob a ótica dos **Objetivos de Desenvolvimento Sustent�
 
 ---
 
-## 👤 Perfis de Usuário e Personas (IHC)
-O sistema foi projetado considerando as necessidades de acessibilidade dos seguintes perfis:
-
-### Perfil 1: Baixa Familiaridade Digital
-*   **Personas:** Sara Castro, Marilda Ribeiro, Murilo Sampaio.
-*   **Foco:** Interfaces simples, linguagem clara e fluxo direto sem complicações técnicas.
-
-### Perfil 2: Vulnerabilidade e Receio de Retaliação
-*   **Personas:** Luana Beneguetti, Denise Amari, Miguel Figueredo.
-*   **Foco:** Garantia de anonimato funcional e proteção de identidade para denúncias seguras.
-
-### Perfil 3: Servidor Público / Gestor
-*   **Personas:** Matheus Watanabe, Lucas Lima, João Nascimento.
-*   **Foco:** Organização de demandas por prioridade, histórico detalhado e agilidade processual.
-
----
-
-## 🛠️ Relatório de Clean Code Aplicado
-
-### 1. DRY (Don't Repeat Yourself)
-*   **Local:** `Solicitacao.java` (Método `podeMudarPara`).
-*   **Melhoria:** Centralizamos a lógica de transição de status em um único ponto, evitando que regras de negócio fiquem duplicadas e facilitando atualizações futuras.
-
-### 2. Guard Clauses (Fail Fast)
-*   **Local:** `ServicoSolicitacoes.java` (Método `criar`).
-*   **Melhoria:** Validação de erros no início do método, interrompendo a execução imediatamente se algo estiver errado. Isso elimina o excesso de `if/else` aninhados.
-
-### 3. Princípio da Responsabilidade Única (SRP)
-*   **Local:** `Solicitacao.java` (Método `exibir`).
-*   **Melhoria:** A classe Solicitacao é a única responsável por saber como formatar seus dados para o usuário, garantindo consistência visual em todo o sistema.
-
----
-
 ## 💻 Como Executar o Projeto
 
 Este é um projeto Java funcional via terminal (CLI).
